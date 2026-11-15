@@ -20,6 +20,8 @@ Payments under Rs 3,000 are never scored and settle instantly (a known weakness,
 | `sim.py` | Synthetic UPI-style network: legit traffic, hard negatives (merchants, collectors, fast legit pass-through agents), mule rings. Variants: `base`, `slow`, `split`, `structure` |
 | `replay.py` | Time-aware features (computed only from earlier transactions), gradient-boosted scorer, policy, evaluation, reason codes |
 | `run_study.py` | 5 seeds x 4 variants, thresholds fixed in advance, out-of-fold scores grouped by ring |
+| `app.py` | Interactive Streamlit demo for exploring scenarios, policies, and simulated payments |
+| `viz.py` | Visualization helpers for the Streamlit demo |
 | `results/` | Output of the study (`study_results.csv`, `study.log`) |
 | `docs/` | Concept note (PDF) |
 
@@ -28,6 +30,7 @@ Payments under Rs 3,000 are never scored and settle instantly (a known weakness,
 pip install -r requirements.txt
 python replay.py        # quick single-seed check (about 10 seconds)
 python run_study.py     # full study (a few minutes), writes study_results.csv
+streamlit run app.py    # interactive demo in your browser
 ```
 
 ## Results (mean over 5 seeds, simulator only)
