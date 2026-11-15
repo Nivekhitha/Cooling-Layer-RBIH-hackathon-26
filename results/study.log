@@ -1,0 +1,52 @@
+base      seed  7 done in    8s  value stopped (p_confirm=1) 95.4%
+base      seed 11 done in    8s  value stopped (p_confirm=1) 97.3%
+base      seed 13 done in    9s  value stopped (p_confirm=1) 98.2%
+base      seed 17 done in    9s  value stopped (p_confirm=1) 95.5%
+base      seed 19 done in    8s  value stopped (p_confirm=1) 97.2%
+slow      seed  7 done in    9s  value stopped (p_confirm=1) 99.2%
+slow      seed 11 done in    8s  value stopped (p_confirm=1) 99.9%
+slow      seed 13 done in    9s  value stopped (p_confirm=1) 98.9%
+slow      seed 17 done in    9s  value stopped (p_confirm=1) 99.5%
+slow      seed 19 done in    9s  value stopped (p_confirm=1) 95.4%
+split     seed  7 done in    8s  value stopped (p_confirm=1) 96.4%
+split     seed 11 done in   11s  value stopped (p_confirm=1) 98.8%
+split     seed 13 done in    9s  value stopped (p_confirm=1) 98.1%
+split     seed 17 done in    9s  value stopped (p_confirm=1) 98.9%
+split     seed 19 done in   10s  value stopped (p_confirm=1) 98.2%
+structure seed  7 done in   10s  value stopped (p_confirm=1) 70.1%
+structure seed 11 done in   10s  value stopped (p_confirm=1) 78.2%
+structure seed 13 done in   11s  value stopped (p_confirm=1) 67.3%
+structure seed 17 done in   10s  value stopped (p_confirm=1) 68.4%
+structure seed 19 done in    9s  value stopped (p_confirm=1) 78.2%
+
+=== value stopped (%), mean +- sd over seeds ===
+p_confirm=1.0: base: 96.7+-1.2  slow: 98.6+-1.8  split: 98.1+-1.0  structure: 72.4+-5.3
+p_confirm=0.8: base: 93.9+-1.5  slow: 95.3+-1.8  split: 94.7+-1.0  structure: 70.4+-5.4
+p_confirm=0.5: base: 80.3+-1.4  slow: 81.0+-1.7  split: 80.1+-1.2  structure: 60.4+-4.8
+
+=== where value is stopped, % of cash-out-bound value (p_confirm=1.0) ===
+stopped_at_victim_pct      base: 68.7  slow: 74.8  split: 66.3  structure: 51.9
+stopped_at_first_hop_pct   base: 23.3  slow: 17.2  split: 26.4  structure: 17.5
+stopped_at_cashout_pct     base: 4.7  slow: 6.6  split: 5.3  structure: 3.0
+value_never_scored_pct     base: 0.0  slow: 0.0  split: 0.0  structure: 22.9
+
+=== PR-AUC with / without graph+device features ===
+pr_auc           base: 0.963+-0.012  slow: 0.962+-0.014  split: 0.984+-0.005  structure: 0.928+-0.034
+pr_auc_no_graph  base: 0.955+-0.014  slow: 0.960+-0.013  split: 0.981+-0.006  structure: 0.925+-0.034
+
+base variant pooled over 5 seeds: legit held 28/5721 = 0.489% (95% upper bound 0.71%); fraud payments held 76.4%
+fraud share of large payments in the simulator: 21.0%
+ fraud_share  hold_precision  holds_per_100k  legit_held_per_100k
+      0.1960          0.9744      15359.8369             393.4976
+      0.0100          0.6118       1248.1194             484.5307
+      0.0010          0.1351        565.2944             488.9355
+      0.0001          0.0154        497.0119             489.3760
+
+same table using the 95% upper bound on the false-hold rate:
+ fraud_share  hold_precision  holds_per_100k  legit_held_per_100k
+      0.1960          0.9634      15534.3304             567.9912
+      0.0100          0.5219       1462.9809             699.3922
+      0.0010          0.0976        782.1091             705.7503
+      0.0001          0.0107        714.0220             706.3861
+
+total legit gated payments pooled: 5721 | holds: 28
